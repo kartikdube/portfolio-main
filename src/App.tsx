@@ -34,6 +34,14 @@ const skills = [
   { category: 'Frontend/Fullstack', items: ['React', 'Next.js', 'TailwindCSS', 'Node.js'] }
 ];
 
+const orchestrationItems = [
+  { type: 'WORKFLOW', label: '/planner', desc: 'The Strategic Brain behind multi-step roadmaps and system plans.', status: 'Active' },
+  { type: 'SKILL', label: 'design-system', desc: 'Powers the glassmorphic, dark-mode tokens and aesthetic guidelines.', status: 'Active' },
+  { type: 'WORKFLOW', label: '/code-architect', desc: 'Designs folder structures, API layers, and core logic patterns.', status: 'Online' },
+  { type: 'RULE', label: 'Premium Aesthetics', desc: 'Enforces modern fonts, curated colors, and high-quality UI standards.', status: 'Enforced' },
+  { type: 'SKILL', label: 'browser-qa', desc: 'Verifies UI fidelity and UX flow in real browser environments.', status: 'Ready' },
+];
+
 function App() {
   return (
     <div className="min-h-screen font-sans selection:bg-brand selection:text-white pb-20">
@@ -71,7 +79,7 @@ function App() {
             <a href="#projects" className="px-6 py-3 rounded-lg bg-white text-slate-900 font-semibold hover:bg-slate-200 transition-colors">
               View My Work
             </a>
-            <a href="https://github.com/" target="_blank" rel="noreferrer" className="px-6 py-3 rounded-lg bg-slate-800 text-white font-semibold border border-slate-700 hover:bg-slate-700 transition-colors">
+            <a href="https://github.com/kartikdube" target="_blank" rel="noreferrer" className="px-6 py-3 rounded-lg bg-slate-800 text-white font-semibold border border-slate-700 hover:bg-slate-700 transition-colors">
               GitHub Profile
             </a>
           </div>
@@ -105,6 +113,65 @@ function App() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Meta-Orchestration Section */}
+        <section className="py-20">
+          <h2 className="text-3xl font-bold text-white mb-12 flex items-center">
+            <span className="w-8 h-[2px] bg-cyan-500 mr-4"></span>
+            AI Orchestration Stack
+          </h2>
+          
+          <div className="rounded-2xl bg-[#0d1117] border border-slate-800 overflow-hidden shadow-2xl">
+            {/* Terminal Header */}
+            <div className="bg-[#161b22] px-4 py-3 flex items-center justify-between border-b border-slate-800">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+              </div>
+              <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest font-bold">
+                Agent Lifecycle Monitor v1.0.4
+              </div>
+              <div className="w-10"></div>
+            </div>
+            
+            {/* Terminal Body */}
+            <div className="p-6 font-mono text-sm space-y-4">
+              <div className="text-slate-500">Initializing orchestrator...</div>
+              
+              <div className="space-y-3">
+                {orchestrationItems.map((item, idx) => (
+                  <div key={idx} className="grid grid-cols-[100px_1fr_100px] gap-4 items-start group">
+                    <div className={cn(
+                      "text-[10px] font-bold px-1.5 py-0.5 rounded border self-center text-center",
+                      item.type === 'WORKFLOW' ? "text-cyan-400 border-cyan-400/30 bg-cyan-400/5" :
+                      item.type === 'SKILL' ? "text-purple-400 border-purple-400/30 bg-purple-400/5" :
+                      "text-emerald-400 border-emerald-400/30 bg-emerald-400/5"
+                    )}>
+                      {item.type}
+                    </div>
+                    <div>
+                      <span className="text-white font-bold">{item.label}</span>
+                      <span className="text-slate-600 mx-2">—</span>
+                      <span className="text-slate-400">{item.desc}</span>
+                    </div>
+                    <div className="text-[10px] text-right text-slate-500 flex items-center justify-end gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      {item.status}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="pt-4 flex items-center gap-2 text-cyan-400">
+                <span className="animate-pulse">❯</span>
+                <span className="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-cyan-400 pr-1">
+                  Orchestrator online. Ready for Phase 3.
+                </span>
+              </div>
+            </div>
           </div>
         </section>
 
