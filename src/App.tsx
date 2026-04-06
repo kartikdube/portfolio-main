@@ -404,7 +404,7 @@ export default function App() {
         {/* ── Hero ── */}
         <section id="about" className="relative pt-32 pb-40 grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative z-10 w-full">
-            <div className="font-mono text-[#10b981] text-sm mb-6 h-5 font-bold">{line1}<span className="animate-blink block mt-1 w-2 h-4 bg-[#10b981] invisible"></span></div>
+            <div className="font-mono text-[#10b981] text-sm mb-6 min-h-[20px] font-bold">{line1}<span className="animate-blink block mt-1 w-2 h-4 bg-[#10b981] invisible"></span></div>
 
             <Reveal delay={1000} noY>
               <h1 className="font-bold mb-6 mt-10">
@@ -416,9 +416,9 @@ export default function App() {
               </h1>
             </Reveal>
 
-            <Reveal delay={2000} noY>
-              <div className="font-mono text-white text-sm mb-2 h-5 mt-2">{line2}</div>
-              <div className="font-mono text-white text-sm mb-12 h-5 mt-2">{line3}</div>
+            <Reveal delay={2000} noY className="flex flex-col gap-4 mb-12 mt-6">
+              <div className="font-mono text-white text-sm leading-relaxed min-h-[3em] md:min-h-[1.5em]">{line2 || '\u00A0'}</div>
+              <div className="font-mono text-white text-sm leading-relaxed">{line3 || '\u00A0'}</div>
             </Reveal>
 
             <Reveal delay={4000}>
