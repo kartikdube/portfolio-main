@@ -87,7 +87,9 @@ function App() {
             {projects.map((project) => (
               <div key={project.id} className="group relative rounded-2xl bg-slate-800/50 border border-slate-700 p-6 hover:border-brand/50 transition-colors flex flex-col h-full">
                 <div className="mb-4">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-brand transition-colors">{project.title}</h3>
+                  <a href={project.link} target="_blank" rel="noreferrer">
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-brand transition-colors">{project.title}</h3>
+                  </a>
                   <p className="text-slate-400 text-sm leading-relaxed">{project.description}</p>
                 </div>
                 <div className="flex flex-wrap gap-2 mb-6 mt-auto">
@@ -98,7 +100,8 @@ function App() {
                   ))}
                 </div>
                 <div className="flex gap-4 text-sm font-semibold">
-                  <a href={project.repo} className="text-white hover:text-brand transition-colors">View Source →</a>
+                  <a href={project.link} target="_blank" rel="noreferrer" className="text-brand hover:text-blue-400 transition-colors">Live Demo →</a>
+                  <a href={project.repo} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors">Source Code</a>
                 </div>
               </div>
             ))}
