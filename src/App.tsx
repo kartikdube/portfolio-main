@@ -4,10 +4,10 @@ const projects = [
   {
     id: 1,
     title: 'Context-Aware RAG Support Bot',
-    description: 'An AI support agent that utilizes a vector database (Pinecone) and LLM to answer technical queries with sources. Demonstrates safe prompt engineering and chunking strategies.',
-    tags: ['Next.js', 'LangChain', 'Pinecone', 'Vercel AI SDK'],
-    link: '#',
-    repo: '#'
+    description: 'An AI support agent that utilizes a vector database lookup and LLM to answer technical queries with sources. Demonstrates safe prompt engineering and chunking strategies.',
+    tags: ['Next.js', 'Vercel AI SDK', 'Tailwind CSS', 'Framer Motion'],
+    link: 'https://kartikdube.github.io/rag-support-bot/',
+    repo: 'https://github.com/kartikdube/rag-support-bot'
   },
   {
     id: 2,
