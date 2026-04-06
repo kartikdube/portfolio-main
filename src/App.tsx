@@ -270,6 +270,12 @@ const skills = [
   { cat: "Infra & Cloud", items: ["Kubernetes", "Docker", "AWS", "Terraform"] },
 ];
 
+const aiIntelData = {
+  rules: ["common", "python", "typescript", "rust", "golang", "java", "cpp", "web"],
+  skills: ["backend-patterns", "design-system", "deployment-patterns", "coding-standards", "e2e-testing", "github-ops"],
+  workflows: ["architect", "chief-of-staff", "planner", "code-reviewer", "performance-optimizer", "security-reviewer", "e2e-runner", "refactor-cleaner", "silent-failure-hunter"]
+};
+
 const philosophyItems = [
   { quote: "Ship early. Measure everything. Iterate relentlessly fast.", title: "INIT_VELOCITY" },
   { quote: "The best model is the one that solves the user's problem. Not the biggest one.", title: "EXEC_PRAGMATISM" },
@@ -500,11 +506,66 @@ export default function App() {
           </div>
         </section>
 
+        {/* ── AI Intel Subsystems ── */}
+        <section id="ai-intel" className="py-24 border-t border-[#10b981]/20">
+          <Reveal>
+            <div className="flex items-center gap-4 mb-16">
+              <span className="font-mono text-[#10b981] text-lg font-bold">ls -la /ai_intel/</span>
+            </div>
+          </Reveal>
+
+          <div className="grid lg:grid-cols-3 gap-6">
+            {/* Rules */}
+            <Reveal delay={100} className="h-full">
+               <Terminal title="tree ./rules" className="h-full lg:min-h-[400px]">
+                 <div className="flex flex-wrap gap-2 mt-2">
+                   {aiIntelData.rules.map(r => (
+                     <div key={r} className="text-[#10b981]/80 px-2 flex items-center gap-2 border border-[#10b981]/30 bg-[#10b981]/10 text-[10px] sm:text-xs py-1.5 uppercase font-bold tracking-widest hover:bg-[#10b981]/20 transition-colors cursor-crosshair">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span>
+                        {r}.conf
+                     </div>
+                   ))}
+                 </div>
+               </Terminal>
+            </Reveal>
+
+            {/* Skills */}
+            <Reveal delay={200} className="h-full">
+               <Terminal title="tree ./skills" className="h-full lg:min-h-[400px]">
+                 <div className="flex flex-col gap-2 mt-2">
+                   {aiIntelData.skills.map(s => (
+                     <div key={s} className="text-syntax-cyan flex justify-between items-center bg-[#050505] border border-syntax-cyan/30 px-3 py-2 text-[10px] sm:text-xs hover:border-syntax-cyan transition-colors cursor-crosshair">
+                        <span className="font-bold tracking-wide">{s}</span>
+                        <span className="text-[10px] opacity-70 bg-syntax-cyan/20 px-1.5 py-0.5">LOADED</span>
+                     </div>
+                   ))}
+                 </div>
+               </Terminal>
+            </Reveal>
+
+            {/* Workflows */}
+            <Reveal delay={300} className="h-full">
+               <Terminal title="ls -1 ./workflows" className="h-full lg:min-h-[400px]">
+                 <div className="flex flex-col gap-1.5 mt-2">
+                   {aiIntelData.workflows.map(w => (
+                     <div key={w} className="text-syntax-purple/90 text-[10px] sm:text-xs font-mono font-bold flex items-center gap-3 hover:text-white transition-colors cursor-crosshair tracking-wider">
+                        <span className="text-syntax-purple/50 shrink-0">{`>`}</span>
+                        <span className="truncate">{w}.md</span>
+                     </div>
+                   ))}
+                   <div className="text-slate-500 text-[10px] sm:text-xs mt-4 pt-4 border-t border-syntax-purple/20 italic">...and 38 more specialized agents available in registry.</div>
+                 </div>
+               </Terminal>
+            </Reveal>
+          </div>
+        </section>
+
         {/* ── Skills & Environment ── */}
-        <section id="skills" className="py-24">
+        <section id="skills" className="py-24 border-t border-[#10b981]/20">
           <Reveal>
             <div className="flex items-center gap-4 mb-12">
               <span className="font-mono text-[#10b981] text-lg font-bold">cat config.env</span>
+
             </div>
           </Reveal>
 
