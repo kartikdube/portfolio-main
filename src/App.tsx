@@ -306,10 +306,10 @@ const projects = [
     accent: "var(--color-syntax-emerald)", link: "#", repo: "#",
   },
   {
-    id: 4, title: "fine-tune-pipeline", ext: ".py", status: "RESEARCH",
-    description: "Automated fine-tuning framework for domain adaptation. Supports LoRA/QLoRA on consumer GPUs.",
-    tags: ["PEFT", "LoRA", "W&B"],
-    accent: "var(--color-syntax-gold)", link: "#", repo: "#",
+    id: 4, title: "llm-mind-map", ext: ".ts", status: "DEPLOYED",
+    description: "An LLM Semantic Graph Comparator that visualizes semantic relationships and clusters word associations into interactive islands.",
+    tags: ["React", "D3.js", "LLMs"],
+    accent: "var(--color-syntax-gold)", link: "https://kartikdube.github.io/llm-mind-map/", repo: "https://github.com/kartikdube/llm-mind-map",
   },
 ];
 
@@ -759,14 +759,16 @@ export default function App() {
                         <span className={cn("text-[10px] font-bold font-mono tracking-widest", statusColor[p.status])}>
                           [{p.status}]
                         </span>
-                        <a href={p.link} className="text-slate-400 hover:text-[#10b981] bg-slate-900 px-3 py-1 border border-slate-800 hover:border-[#10b981] transition-all text-xs font-bold">
+                        <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#10b981] bg-slate-900 px-3 py-1 border border-slate-800 hover:border-[#10b981] transition-all text-xs font-bold">
                           EXEC
                         </a>
                       </div>
 
-                      <h3 className="text-white text-lg font-bold font-mono tracking-tight group-hover:text-[#10b981] transition-colors mt-2">
-                        ./{p.title}
-                      </h3>
+                      <a href={p.link} target="_blank" rel="noopener noreferrer" className="inline-block mt-2">
+                        <h3 className="text-white text-lg font-bold font-mono tracking-tight group-hover:text-[#10b981] hover:underline transition-colors w-max">
+                          ./{p.title}
+                        </h3>
+                      </a>
 
                       <p className="text-slate-400 font-mono text-sm leading-relaxed flex-1">
                         {p.description}
