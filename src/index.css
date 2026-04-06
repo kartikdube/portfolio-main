@@ -1,10 +1,87 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand: #3b82f6;
-  --font-sans: "Inter", "Roboto", "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;
+  /* Terminal Hybrid Palette */
+  --color-brand: #10b981; /* Terminal Green */
+  --font-sans: "JetBrains Mono", "Fira Code", monospace;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  --color-syntax-gold: #e5c07b;
+  --color-syntax-purple: #c678dd;
+  --color-syntax-emerald: #10b981; /* Standardized to our brand green */
+  --color-syntax-cyan: #06b6d4;
+  --color-syntax-slate: #64748b;
+  --color-syntax-red: #ef4444;
 }
 
-body {
-  @apply bg-slate-900 text-slate-100 antialiased selection:bg-brand selection:text-white;
+@layer base {
+  * { cursor: none !important; }
+  body {
+    @apply bg-[#050505] text-[#10b981] antialiased selection:bg-[#10b981]/30 selection:text-white font-mono;
+    overflow-x: hidden;
+  }
+}
+
+/* ── Keyframes ── */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-10px) rotate(1deg); }
+  66%       { transform: translateY(5px) rotate(-1deg); }
+}
+@keyframes float-slower {
+  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  50%       { transform: translateY(-15px) rotate(2deg) scale(1.02); }
+}
+@keyframes scanline {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(100%); }
+}
+@keyframes reveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ── Utilities ── */
+@layer utilities {
+  .bg-grid {
+    background-image: 
+      linear-gradient(to right, rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  .terminal-panel {
+    @apply bg-[#000000]/80 backdrop-blur-md border border-[#10b981]/30 relative overflow-hidden;
+    /* Soft glow on panels instead of glass drop shadow */
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.05);
+  }
+  
+  .scanline {
+    @apply absolute inset-0 pointer-events-none;
+    background: linear-gradient(to bottom, transparent, rgba(16, 185, 129, 0.08) 50%, transparent);
+    background-size: 100% 4px;
+    animation: scanline 10s linear infinite;
+  }
+  
+  .perspective-1200 { perspective: 1200px; }
+  
+  .aura { @apply absolute rounded-full blur-[140px] mix-blend-screen pointer-events-none opacity-20; }
+  
+  .reveal {
+    opacity: 0;
+    transform: translateY(2rem);
+    animation: reveal 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  
+  /* Hard text glow for headers */
+  .text-glow {
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+  }
+  
+  .float-slow   { animation: float-slow 10s ease-in-out infinite; }
+  .float-slower { animation: float-slower 15s ease-in-out infinite; }
+  .animate-blink { animation: blink 1s step-end infinite; }
 }
