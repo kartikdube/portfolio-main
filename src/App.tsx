@@ -288,28 +288,32 @@ function HolographicCard({ children, className }: { children: React.ReactNode, c
 
 const projects = [
   {
-    id: 1, title: "autonomous-task-agent", ext: ".py", status: "ONLINE",
-    description: "Multi-step reasoning agent with dynamic tool-calling. Orchestrates Search, Calculator, and Code-Executor tools.",
-    tags: ["LangGraph", "OpenAI", "FastAPI"],
-    accent: "var(--color-syntax-cyan)", link: "#", repo: "#",
+    id: 1, title: "agent-city", ext: ".tsx", status: "DEPLOYED",
+    description: "Multi-agent simulation dashboard to model urban scenarios and governance styles using local LLMs.",
+    tags: ["Next.js", "Tailwind", "Multi-Agent"],
+    accent: "var(--color-syntax-cyan)", link: "https://kartikdube.github.io/agent-city/", repo: "https://github.com/kartikdube/agent-city",
+    isBroken: false,
   },
   {
-    id: 2, title: "multimodal-analyzer", ext: ".ts", status: "DEPLOYED",
-    description: "Production ML pipeline for image and audio analysis using Whisper and CLIP on a K8s cluster.",
-    tags: ["PyTorch", "HuggingFace", "K8s"],
-    accent: "var(--color-syntax-purple)", link: "#", repo: "#",
-  },
-  {
-    id: 3, title: "rag-knowledge-engine", ext: ".go", status: "TESTING",
-    description: "Enterprise knowledge retrieval engine using hybrid search (BM25 + vector embeddings).",
-    tags: ["Pinecone", "Golang", "Cohere"],
-    accent: "var(--color-syntax-emerald)", link: "#", repo: "#",
-  },
-  {
-    id: 4, title: "llm-mind-map", ext: ".ts", status: "DEPLOYED",
+    id: 2, title: "llm-mind-map", ext: ".ts", status: "DEPLOYED",
     description: "An LLM Semantic Graph Comparator that visualizes semantic relationships and clusters word associations into interactive islands.",
     tags: ["React", "D3.js", "LLMs"],
     accent: "var(--color-syntax-gold)", link: "https://kartikdube.github.io/llm-mind-map/", repo: "https://github.com/kartikdube/llm-mind-map",
+    isBroken: false,
+  },
+  {
+    id: 3, title: "multimodal-analyzer", ext: ".ts", status: "OFFLINE",
+    description: "CORRUPTED_SYSTEM_DATA: ERR_NODE_UNREACHABLE",
+    tags: ["ERR_503"],
+    accent: "var(--color-syntax-purple)", link: "#", repo: "#",
+    isBroken: true,
+  },
+  {
+    id: 4, title: "rag-knowledge-engine", ext: ".go", status: "OFFLINE",
+    description: "DATA_CORRUPTION_DETECTED: OFFLINE_FOR_MAINTENANCE",
+    tags: ["ERR_503"],
+    accent: "var(--color-syntax-emerald)", link: "#", repo: "#",
+    isBroken: true,
   },
 ];
 
@@ -752,23 +756,37 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-8">
             {projects.map((p, i) => (
               <Reveal key={p.id} delay={i * 100} className="h-full">
-                <HolographicCard>
-                  <Terminal title={`${p.title}${p.ext}`}>
+                <HolographicCard className={p.isBroken ? "broken-screen" : ""}>
+                  <Terminal title={`${p.title}${p.ext}`} className={p.isBroken ? "broken-content" : undefined}>
                     <div className="space-y-6 h-full flex flex-col">
                       <div className="flex items-center justify-between pb-4 border-b border-[#10b981]/20">
-                        <span className={cn("text-[10px] font-bold font-mono tracking-widest", statusColor[p.status])}>
+                        <span className={cn("text-[10px] font-bold font-mono tracking-widest", statusColor[p.status] || "text-red-500")}>
                           [{p.status}]
                         </span>
-                        <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#10b981] bg-slate-900 px-3 py-1 border border-slate-800 hover:border-[#10b981] transition-all text-xs font-bold">
-                          EXEC
-                        </a>
+                        {p.isBroken ? (
+                          <span className="text-slate-600 bg-slate-900 px-3 py-1 border border-red-900/50 text-xs font-bold cursor-not-allowed opacity-50 relative z-30">
+                            ERR_404
+                          </span>
+                        ) : (
+                          <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#10b981] bg-slate-900 px-3 py-1 border border-slate-800 hover:border-[#10b981] transition-all text-xs font-bold relative z-30">
+                            EXEC
+                          </a>
+                        )}
                       </div>
 
-                      <a href={p.link} target="_blank" rel="noopener noreferrer" className="inline-block mt-2">
-                        <h3 className="text-white text-lg font-bold font-mono tracking-tight group-hover:text-[#10b981] hover:underline transition-colors w-max">
-                          ./{p.title}
-                        </h3>
-                      </a>
+                      {p.isBroken ? (
+                        <div className="inline-block mt-2 relative z-30 pointer-events-none">
+                          <h3 className="text-slate-600 outline-none text-lg font-bold font-mono tracking-tight w-max line-through decoration-red-900">
+                            ./{p.title}
+                          </h3>
+                        </div>
+                      ) : (
+                        <a href={p.link} target="_blank" rel="noopener noreferrer" className="inline-block mt-2 relative z-30">
+                          <h3 className="text-white text-lg font-bold font-mono tracking-tight group-hover:text-[#10b981] hover:underline transition-colors w-max">
+                            ./{p.title}
+                          </h3>
+                        </a>
+                      )}
 
                       <p className="text-slate-400 font-mono text-sm leading-relaxed flex-1">
                         {p.description}
