@@ -302,11 +302,11 @@ const projects = [
     isBroken: false,
   },
   {
-    id: 3, title: "multimodal-analyzer", ext: ".ts", status: "OFFLINE",
-    description: "CORRUPTED_SYSTEM_DATA: ERR_NODE_UNREACHABLE",
-    tags: ["ERR_503"],
-    accent: "var(--color-syntax-purple)", link: "#", repo: "#",
-    isBroken: true,
+    id: 3, title: "sherlock-graph-rag", ext: ".tsx", status: "DEPLOYED",
+    description: "A high-fidelity visual explorer comparing standard RAG vs. Graph-based retrieval using the Sherlock Holmes corpus.",
+    tags: ["Next.js", "GraphRAG", "OpenAI"],
+    accent: "var(--color-syntax-purple)", link: "https://kartikdube.github.io/sherlock-graph-RAG/", repo: "https://github.com/kartikdube/sherlock-graph-RAG",
+    isBroken: false,
   },
   {
     id: 4, title: "rag-knowledge-engine", ext: ".go", status: "OFFLINE",
