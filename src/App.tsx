@@ -295,10 +295,10 @@ const projects = [
     isBroken: false,
   },
   {
-    id: 2, title: "llm-mind-map", ext: ".ts", status: "DEPLOYED",
-    description: "An LLM Semantic Graph Comparator that visualizes semantic relationships and clusters word associations into interactive islands.",
-    tags: ["React", "D3.js", "LLMs"],
-    accent: "var(--color-syntax-gold)", link: "https://kartikdube.github.io/llm-mind-map/", repo: "https://github.com/kartikdube/llm-mind-map",
+    id: 2, title: "graphdb-evolution", ext: ".tsx", status: "DEPLOYED",
+    description: "A temporal graph application visualizing the evolution of a character network across narrative sections.",
+    tags: ["FastAPI", "Neo4j", "Ollama"],
+    accent: "var(--color-syntax-gold)", link: "https://kartikdube.github.io/graphdb-evolution/", repo: "https://github.com/kartikdube/graphdb-evolution",
     isBroken: false,
   },
   {
@@ -309,11 +309,11 @@ const projects = [
     isBroken: false,
   },
   {
-    id: 4, title: "rag-knowledge-engine", ext: ".go", status: "OFFLINE",
-    description: "DATA_CORRUPTION_DETECTED: OFFLINE_FOR_MAINTENANCE",
-    tags: ["ERR_503"],
-    accent: "var(--color-syntax-emerald)", link: "#", repo: "#",
-    isBroken: true,
+    id: 4, title: "llm-mind-map", ext: ".ts", status: "DEPLOYED",
+    description: "An LLM Semantic Graph Comparator that visualizes semantic relationships and clusters word associations into interactive islands.",
+    tags: ["React", "D3.js", "LLMs"],
+    accent: "var(--color-syntax-emerald)", link: "https://kartikdube.github.io/llm-mind-map/", repo: "https://github.com/kartikdube/llm-mind-map",
+    isBroken: false,
   },
 ];
 
